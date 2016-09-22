@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var pentArr = [];
+		var pentSumJ = [];
+		var pentSumK = [];
+		var pentDifJ = [];
+		var pentDifK = [];
+		var pentBoth = [];
+		var finDif;
+
+		for(var i = 1; i < 1000; i++) {			//This generates pentagonal
+			var pent = (i * (3 * i - 1)) / 2;		//numbers and pushes them to
+			pentArr.push(pent);					//the array: pentArr
+		}
+
+		for (var i = 0; i < (pentArr.length - 1); i++) {
+			var pentJ = pentArr[i];
+			var lowerLim = i;
+			for(var j = (lowerLim + 1); j < pentArr.length; j++) {
+				var pentK = pentArr[j];
+				if (pentArr.indexOf(pentJ + pentK) !== -1){
+					pentSumJ.push(pentJ);
+					pentSumK.push(pentK);
+				}
+			}
+		}
+
+		for (var i = 0; i < (pentArr.length - 1); i++) {
+			var pentJ = pentArr[i];
+			var lowerLim = i;
+			for(var j = (lowerLim + 1); j < pentArr.length; j++) {
+				var pentK = pentArr[j];
+				if (pentArr.indexOf(pentK - pentJ) !== -1){
+					pentDifJ.push(pentJ);
+					pentDifK.push(pentK);
+				}
+			}
+		}
+
+		finDif = pentArr[pentArr.length - 1];
+		var bothLen;
+		if (pentSumJ.length > pentDifJ.length) {
+			bothLen = pentDifJ.length;
+			for (var i = 0; i < bothLen; i++) {
+				if(pentSumJ.indexOf(pentDifJ[i]) !== -1 && pentSumK.indexOf(pentDifK[i]) !== -1){
+					pentBoth.push([pentDifJ[i], pentDifK[i]]);
+				}
+			}
+		} else {
+			bothLen = pentSumJ.length;
+			for (var i = 0; i < bothLen; i++) {
+				if(pentDifJ.indexOf(pentSumJ[i]) !== -1 && pentDifK.indexOf(pentSumK[i]) !== -1){
+					pentBoth.push([pentSumJ[i], pentSumK[i]]);
+				}
+			}
+		}
+
+		
+
+		
+	
+			
+
+
+
+	</script>
+</body>
+</html>
